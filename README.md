@@ -1,5 +1,5 @@
 # AirBnB-Opinion-Mining-Project
-<h1 PIP Installation for spaCY: h1>
+<h1> PIP Installation for spaCY: </h1>
 
 pip install spacy==2.3.5 <br>
 python -m spacy download en_core_web_sm <br>
