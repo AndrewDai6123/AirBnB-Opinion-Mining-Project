@@ -1,5 +1,5 @@
 # AirBnB-Opinion-Mining-Project
-<h1> PIP Installation for spaCY: </h1>
+<h2> PIP Installation for spaCY: </h2>
 
 pip install -U pip setuptools wheel<br>
 pip install -U spacy<br>
