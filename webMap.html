@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <title>AirBnB Listings Geocoded</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css' rel='stylesheet' />
+    <style>
+      body { 
+        margin: 0; 
+        padding: 0; 
+      }
+      #map { 
+        position: absolute; 
+        top: 0; 
+        bottom: 0; 
+        width: 100%; 
+      }
+    </style>
+  </head>
+  <body>
+    <div id='map'></div>
+    <script>
+    // Adding my map from mapbox with access token and map style
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYW5kcmV3ZGFpNjEyMyIsImEiOiJjbDZjeTU0cjQxbm93M2txc3JobWN4enNtIn0.jhcCHhbEkvov0hqGKDuDkA'; 
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/andrewdai6123/clbf0gev5000r15o1rwws5alp', 
+      center: [-73.985504, 40.714561],
+      zoom: 11
+    });
+
+    /* 
+    Add an event listener that runs
+    when a user clicks on the map element.
+    */
+    map.on('click', (event) => {
+    // If the user clicked on one of your markers, get its information.
+    const features = map.queryRenderedFeatures(event.point, {
+        tiles: ['listingsRated-66w4mj']
+    });
+    if (!features.length) {
+        return;
+    }
+    const feature = features[0];
+
+    /* 
+    Create a popup, specify its options 
+    and properties, and add it to the map.
+    */
+    const popup = new mapboxgl.Popup({ offset: [0, -15] })
+    .setLngLat(feature.geometry.coordinates)
+    .setHTML(
+        `<h3>${feature.properties.name}</h3>
+        <p>Host: ${feature.properties.host_name}</p>
+        <h4>Sentiment Analysis</h4>
+        <p>[Positive, Neutral, Negative]: ${feature.properties.Description}</p>`
+    )
+    .addTo(map);
+    });
+
+    </script>
+  </body>
+</html>
