@@ -9,6 +9,6 @@ py -m pip install pandas
 <br>
 
 <h2> Web Map: </h2>
-Left click: drag map, click on listings
-Right click: drag camera view point
-Scroll wheel: zoom in and out
+Left click: drag map, click on listings<br>
+Right click: drag camera view point<br>
+Scroll wheel: zoom in and out<br>
